@@ -240,12 +240,7 @@ nav {
   }
 
   .theme-toggle-li {
-    padding: 10px 15px;
-  }
-
-  .theme-toggle-btn {
-    width: 100%;
-    text-align: left;
+    padding: 8px 15px;
   }
 }
 
@@ -273,17 +268,26 @@ nav {
 }
 
 .theme-toggle-li {
-  padding-top: 11px;
+  padding-top: 8px;
   padding-left: 10px;
 }
 
 .theme-toggle-btn {
   border-color: #a7b7c8;
   color: #20364c;
-  font-family: "Montserrat", Helvetica, sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 500;
   background: #ffffff;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  border-radius: 50%;
+  padding: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-toggle-btn:hover,
@@ -650,14 +654,14 @@ body.dark-mode .navbar-inverse .navbar-nav > li > a:focus {
 }
 
 body.dark-mode .theme-toggle-btn {
-  background: #233247;
-  border-color: #445c7b;
-  color: #e6edf7;
+  background: #1f2d40;
+  border-color: #4f6788;
+  color: #ffd469;
 }
 
 body.dark-mode .theme-toggle-btn:hover,
 body.dark-mode .theme-toggle-btn:focus {
-  background: #2b3d56;
-  border-color: #5b7394;
-  color: #ffffff;
+  background: #2a3b53;
+  border-color: #5e78a0;
+  color: #ffe08a;
 }

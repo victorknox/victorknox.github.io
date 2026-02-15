@@ -9,11 +9,15 @@ $(document).ready(function() {
 
     const $toggleBtn = $("#theme-toggle");
     if ($toggleBtn.length) {
-      $toggleBtn.text(isDark ? "Light mode" : "Dark mode");
+      const iconClass = isDark ? "fas fa-sun" : "fas fa-moon";
+      const nextLabel = isDark ? "Switch to light mode" : "Switch to dark mode";
+      $toggleBtn.html('<i class="' + iconClass + '" aria-hidden="true"></i>');
+      $toggleBtn.attr("aria-label", nextLabel);
+      $toggleBtn.attr("title", nextLabel);
     }
   }
 
-  const savedTheme = localStorage.getItem(themeStorageKey) || "light";
+  const savedTheme = localStorage.getItem(themeStorageKey) || "dark";
   applyTheme(savedTheme);
 
   // Navbar is included dynamically, so event delegation is needed.
@@ -27,7 +31,7 @@ $(document).ready(function() {
   const toggleSync = setInterval(function() {
     syncAttempts += 1;
     if ($("#theme-toggle").length || syncAttempts > 25) {
-      applyTheme(localStorage.getItem(themeStorageKey) || "light");
+      applyTheme(localStorage.getItem(themeStorageKey) || "dark");
       clearInterval(toggleSync);
     }
   }, 120);

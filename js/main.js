@@ -1,5 +1,37 @@
 $(document).ready(function() {
 
+  // Dark mode ---------------------------------------------------------------
+  const themeStorageKey = "vkb-theme";
+
+  function applyTheme(theme) {
+    const isDark = theme === "dark";
+    $("body").toggleClass("dark-mode", isDark);
+
+    const $toggleBtn = $("#theme-toggle");
+    if ($toggleBtn.length) {
+      $toggleBtn.text(isDark ? "Light mode" : "Dark mode");
+    }
+  }
+
+  const savedTheme = localStorage.getItem(themeStorageKey) || "light";
+  applyTheme(savedTheme);
+
+  // Navbar is included dynamically, so event delegation is needed.
+  $(document).on("click", "#theme-toggle", function() {
+    const nextTheme = $("body").hasClass("dark-mode") ? "light" : "dark";
+    localStorage.setItem(themeStorageKey, nextTheme);
+    applyTheme(nextTheme);
+  });
+
+  let syncAttempts = 0;
+  const toggleSync = setInterval(function() {
+    syncAttempts += 1;
+    if ($("#theme-toggle").length || syncAttempts > 25) {
+      applyTheme(localStorage.getItem(themeStorageKey) || "light");
+      clearInterval(toggleSync);
+    }
+  }, 120);
+
   // Scroll to top button ----------------------------------------------------------
   // When the user scrolls down 20px from the top of the document, show the button
   window.onscroll = function() {
